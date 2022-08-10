@@ -25,4 +25,4 @@ def get_up(nums):
             ups.append(nums[i])
     return ups
 
-print(get_up(nums))
+print(get_up2(nums))
