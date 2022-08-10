@@ -10,9 +10,9 @@
 import re
 import itertools
 
-file1 = "1.txt"
-file2 = '2.txt'
-file_sum = 'polynomials.txt'
+file1 = "C:\p1.txt"
+file2 = 'C:\p2.txt'
+file_sum = 'C:\polynomials.txt'
 
 # Получение данных из файла
 
@@ -38,11 +38,12 @@ def convert_pol(pol):
 # Получение списка кортежей суммы (<коэф1 + коэф2>, <степень>)
 
 def fold_pols(pol1, pol2):   
-    x = [0] * (max(pol1[0][1], pol2[0][1] + 1))
-    for i in pol1 + pol2:        
-        x[i[1]] += i[0]
-    res = [(x[i], i) for i in range(len(x)) if x[i] != 0]
-    res.sort(key = lambda r: r[1], reverse = True)
+    x = [0]*(pol1[0][1]*pol2[0][1]+1)
+    for i in pol1:
+        for j in pol2:
+            x[i[1]+j[1]]+=i[0]*j[0]
+    res = [(x[i],i) for i in range(len(x)) if x[i]!=0]
+    res.sort(key = lambda r: r[1], reverse= True)
     return res
 
 # Составление итогового многочлена
